@@ -1,0 +1,14 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Alpine Runner
+    runs-on: ubuntu-latest
+    container: alpine:3.16
+    steps:
+      - uses: actions/checkout@v2
+      - name: Speak!
+        run: echo Hello World
+      
