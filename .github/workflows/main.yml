@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     container: alpine:3.16
     steps:
-      - run: apk install --no-cache git
+      - run: apk add --no-cache git
       - uses: actions/checkout@v3
       - name: Speak!
         run: echo Hello World
