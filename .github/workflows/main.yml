@@ -8,13 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     container: alpine:3.16
     steps:
-      - run: apk add --no-cache git
+      - run: apk add --no-cache git build-base
       - uses: actions/checkout@v3
       - name: Speak!
         run: echo Hello World
-      - name: Write!
-        run: echo Hi > foo.txt
+      - name: Build!
+        run: gcc -static main.c -o main
+      - name: Check file info
+        run: file ./main
+      - name: Run!
+        run: ./main
       - name: Save!
         uses: actions/upload-artifact@v3
         with:
-          path: foo.txt
+          path: ./main
